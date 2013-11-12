@@ -6,6 +6,7 @@
 		
 		<link rel="stylesheet" type="text/css" href="style.css"/>
 		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript" src="utils.js"></script>
 	</head>
 
 	<body>
@@ -19,10 +20,11 @@
 
 		<div id="content-panel">
 			<div id="options">
-				<div class="Resource">Resources Management</div>
-				<div class="Land">Land and Buildings</div>
-				<div class="Work">Workplaces and Deployment</div>
+				<button onclick="switch_tab('resource')" id="resource_tab" class="highlighted">Resources Management</button>
+				<button onclick="switch_tab('land')" id="land_tab">Land and Buildings</button>
+				<button onclick="switch_tab('workplace')" id="workplace_tab">Workplaces and Deployment</button>
 			</div>
+
 			<div id="content"></div>
 		</div>
 

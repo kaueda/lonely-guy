@@ -1,26 +1,59 @@
+body
+{
+    color: #fff;
+    font-family: sans-serif;
+    margin: 1px;
+    padding: 1px;
+}
+
 #manager {
     position: relative;
     width: 25%;
     height: 300px;
-	background-color: rgb(255, 0, 0);
-	float: left;
+    background-color: #f00;
+    float: left;
 }
 
 #content-panel {
     position: relative;
+    float: right;
     left: 1px;
     width: 74.5%;
     height: 300px;
-	background-color: rgb(0, 255, 0);
-	float: right;
+    background-color: #0f0;
+}
+
+button {
+    color: #fff;
+    position: static;
+    float: left;
+    font-size: 14px;
+    background-color: #bbb;/*dark grey*/
+    border-radius: 5px;
+    border: 1px solid #aaa;/*more darkgrey*/
+    margin: 1px 2px 1px 2px;
+    width: 200px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.highlighted {
+    color: #000;
+    background-color: #ddd;/*dark grey*/
 }
 
 #footer {
-    position: relative;
-    width: 100%;
-    height: 100px;
-    top: 303px;
-	background-color: rgb(0, 0, 255);
+    position: absolute;
+    width: 99.8%;
+    height: 56px;
+    top: 308px;
+    background-color: #00f;
+}
+
+#footer p {
+    margin: 5px;
+    font-size: 10px;
 }
 
 div {
