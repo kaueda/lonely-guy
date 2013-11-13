@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
-		
+
 		<link rel="stylesheet" type="text/css" href="style.css"/>
 		<script type="text/javascript" src="app.js"></script>
 		<script type="text/javascript" src="utils.js"></script>
@@ -11,9 +11,19 @@
 
 	<body>
 		<div id="manager">
-			<div class="Resources">
-				<div id="wood">
-					<span id="amount"></span>
+			<div class="resources_tab">
+				<div id="food" class="resource">
+					<span id="food_amount">You Have: 0 meat chunks</span><br>
+					<button onclick="Game.huntGame()" id="hunt">HUNT!</button>
+				</div>
+
+				<div id="wood" class="resource">
+					<span id="wood_amount">You Have: 0 logs</span><br>
+					<button onclick="Game.chopWood()" id="chop">CHOP!</button>
+				</div>
+
+				<div id="peasants" class="resource">
+					<span id="peasant_amount">You Have: 1 peasants (tip: It's you!)</span><br>
 				</div>
 			</div>
 		</div>
@@ -21,18 +31,20 @@
 		<div id="content-panel">
 			<div id="options">
 				<!--<button onclick="Game()">testing</button>-->
-				<button onclick="switch_tab('resource')" id="resource_tab" class="highlighted">Resources Management</button>
+				<button onclick="switch_tab('messages')" id="messages_tab" class="highlighted">Messages</button>
+				<button onclick="switch_tab('resource')" id="resource_tab">Resources Management</button>
 				<button onclick="switch_tab('land')" id="land_tab">Land and Buildings</button>
 				<button onclick="switch_tab('workplace')" id="workplace_tab">Workplaces and Deployment</button>
 			</div>
 
-			<div id="content"></div>
+			<div id="content">
+			</div>
 		</div>
 
 		<div id="footer">
 			<p>Created by Kaue Ueda</p>
-			<p>Email: kauesilveira@gmail.com@</p>
-			<p>Version 0.0.1</p>
+			<p>Email: kauesilveira1609@gmail.com</p>
+			<p>Version 0.0.2</p>
 		</div>
 	</body>
 </html>
