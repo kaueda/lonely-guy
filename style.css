@@ -1,75 +1,191 @@
-html, body {
-    min-height: 100%;
+/*Page Basics*/
+body {
+    font-size: 100%;
+    font-family: Tahoma, Geneva, sans-serif;
     color: #fff;
-    font-family: sans-serif;
-    margin: 1px;
-    padding: 1px;
-}
-
-#manager {
-    position: relative;
-    float: left;
-    z-index: 1000;
-    width: 24.6%;
-    height: 300px;
-    background-color: #f00;
-}
-
-.resource {
-    height: 50px;
-}
-
-#content-panel {
-    position: relative;
-    float: right;
-    left: 1px;
-    width: 75%;
-    height: 300px;
-    background-color: #0f0;
-}
-
-#options {
-    height: 60px;
-    background-color: #000;
-}
-
-#content {
-
-}
-
-button {
-    color: #fff;
-    position: relative;
-    float: left;
-    font-size: 12px;
-    background-color: #bbb;/*dark grey*/
-    border-radius: 5px;
-    border: 1px solid #aaa;/*more darkgrey*/
-    margin: 1px 2px 1px 2px;
-    width: 197px;
-    padding: 5px;
-    text-align: center;
-    cursor: pointer;
-}
-
-.highlighted {
-    color: #000;
-    background-color: #ddd;/*dark grey*/
-}
-
-#footer {
-    position: absolute;
-    width: 99.8%;
-    height: 56px;
-    top: 308px;
-    background-color: #00f;
-}
-
-#footer p {
-    margin: 5px;
-    font-size: 10px;
 }
 
 div {
     border-radius: 5px;
+}
+
+p, h3 {
+    margin: 2px;
+    padding: 1px;
+}
+
+button {
+    margin: 1px; 
+    background-color: #bbb;
+    border: 2px solid #aaa;
+    border-radius: 5px;
+    color: #fff;
+    text-shadow: -1px -1px 0px #aaa;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.highlighted {
+    background-color: #ddd;
+    border-color: #bbb;
+    color: #222;
+    text-shadow: -1px -1px 0px #bbb;
+}
+
+.fl_right {
+    float: right;
+}
+
+/*******************************/
+/* Manager and sub divs style*/
+#manager {
+    position: relative;
+    float: left;
+    width: 97.3%;
+    background-color: #f00;
+    border: 1px solid #aaa;
+    padding: 4px;
+    margin: 2px;
+}
+
+#resources_tab {
+    text-align: center;
+}
+
+#hunt {
+    font-size: 1.0em;
+    text-shadow: -1px -1px 0px #000;
+    width: 100px;
+    background-color: #b53;
+    border-color: #932;
+}
+
+#chop {
+    font-size: 1.0em;
+    text-shadow: -1px -1px 0px #000;
+    width: 100px;
+    background-color: #b83;
+    border-color: #850;
+}
+
+#mine {
+    font-size: 1.0em;
+    text-shadow: -1px -1px 0px #000;
+    width: 100px;
+    background-color: #aaa;
+    border-color: #888;
+}
+/********************************************/
+/* Content and sub divs style*/
+#content_panel {
+    position: relative;
+    float: left;
+    width: 97.3%;
+/*    height: 400px;*/
+    background-color: #0f0;
+    border: 1px solid #aaa;
+    padding: 5px;
+    margin: 2px;
+}
+
+#options_tab {
+    background-color: #000;
+    margin: 2px;
+    padding: 2px;
+}
+
+#options_tab button {
+    width: 230px;
+    margin: 2px;
+}
+
+#content {
+}
+
+#resource_content {
+    background-color: #05f;
+}
+
+#land_content {
+    background-color: #f5f;
+}
+
+#workplace_content {
+    background-color: #f50;
+}
+
+#messages_content {
+    background-color: #5f5;
+}
+
+
+/********************************************/
+/* Footer and sub divs style*/
+#footer {
+    position: relative;
+    float: left;
+    width: 97.3%;
+    background-color: #00f;
+    border: 1px solid #aaa;
+    margin: 2px;
+    padding: 5px;
+    font-size: 0.7em;
+}
+/********************************************/
+/* Responsive styles*/
+/*******************************************/
+@media screen and (min-width: 700px) {
+    #content_panel {
+        width: 71%;
+    }
+    #manager{
+        width: 28%;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    #content_panel {
+        width: 62%;
+    }
+    #manager{
+        width: 35%;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    #content_panel {
+        width: 67%;
+    }
+    #manager{
+        width: 30%;
+    }
+}
+
+
+@media screen and (min-width: 1300px) {
+    #content_panel {
+        width: 72%;
+    }
+    #manager{
+        width: 25%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    #content_panel {
+        width: 77%;
+    }
+    #manager{
+        width: 20%;
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    #content_panel {
+        width: 81%;
+    }
+    #manager{
+        width: 16%;
+    }
 }

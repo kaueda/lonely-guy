@@ -1,50 +1,121 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
 
-		<link rel="stylesheet" type="text/css" href="style.css"/>
-		<script type="text/javascript" src="app.js"></script>
-		<script type="text/javascript" src="utils.js"></script>
-	</head>
-
-	<body>
-		<div id="manager">
-			<div class="resources_tab">
-				<div id="food" class="resource">
-					<span id="food_amount">You Have: 0 meat chunks</span><br>
-					<button onclick="Game.huntGame()" id="hunt">HUNT!</button>
-				</div>
-
-				<div id="wood" class="resource">
-					<span id="wood_amount">You Have: 0 logs</span><br>
-					<button onclick="Game.chopWood()" id="chop">CHOP!</button>
-				</div>
-
-				<div id="peasants" class="resource">
-					<span id="peasant_amount">You Have: 1 peasants (tip: It's you!)</span><br>
-				</div>
-			</div>
-		</div>
-
-		<div id="content-panel">
-			<div id="options">
-				<!--<button onclick="Game()">testing</button>-->
-				<button onclick="switch_tab('messages')" id="messages_tab" class="highlighted">Messages</button>
-				<button onclick="switch_tab('resource')" id="resource_tab">Resources Management</button>
-				<button onclick="switch_tab('land')" id="land_tab">Land and Buildings</button>
-				<button onclick="switch_tab('workplace')" id="workplace_tab">Workplaces and Deployment</button>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="utils.js"></script>
+	<title>Lonely Guy</title>
+</head>
+<body>
+	<div id="manager">
+		<div id="resources_tab">
+			<h3>You Have:</h3>
+			<div id="food" class="resource">
+				<span id="food_amount">0 meat chunks</span><br>
+				<button onclick="gm.huntGame()" id="hunt">HUNT!</button>
 			</div>
 
-			<div id="content">
+			<div id="wood" class="resource">
+				<span id="wood_amount">0 logs</span><br>
+				<button onclick="gm.chopWood()" id="chop">CHOP!</button>
+			</div>
+
+			<div id="peasants" class="resource">
+				<span id="peasant_amount">1 peasant (tip: It's you!)</span><br>
+			</div>
+
+			<div id="money" class="resources">
+				<span id="no_money">No Money</span>
+				<div id="copper_amount" style="width: 100%; display: none;"></div>
+				<div id="silver_amount" style="width: 100%; display: none;"></div>
+				<div id="gold_amount" style="width: 100%; display: none;"></div>
+				<div id="platinum_amount" style="width: 100%; display: none;"></div>
 			</div>
 		</div>
+	</div>
 
-		<div id="footer">
-			<p>Created by Kaue Ueda</p>
-			<p>Email: kauesilveira1609@gmail.com</p>
-			<p>Version 0.0.2</p>
+	<div id="content_panel">
+		<div id="options_tab">
+			<!--<button onclick="Game()">testing</button>-->
+			<button onclick="switch_tab('resource')" id="resource_tab">Resources Management</button>
+			<button onclick="switch_tab('land')" id="land_tab">Land and Buildings</button>
+			<button onclick="switch_tab('workplace')" id="workplace_tab">Workplaces and Deployment</button>
+			<button onclick="switch_tab('messages')" id="messages_tab" class="highlighted">Messages</button>
 		</div>
-	</body>
+
+		<div id="content">
+			<div id="resource_content" style="display: none;">
+				<div id="sell_wood">
+					<h3>Wood Trading</h3>
+					<p>You can always try the local market for some money.
+						<span class="fl_right">10 copper per log</span>
+					</p>
+					<button onclick="gm.rsrc.wood.sell(1)" id="wd_sell1">Sell 1 piece</button>
+					<button onclick="gm.rsrc.wood.sell(10)" style="display: none;" id="wd_sell10">Sell 10 pieces</button>
+					<button onclick="gm.rsrc.wood.sell(10)" style="display: none;" id="wd_sell100">Sell 100 pieces</button>
+					<button onclick="gm.rsrc.wood.sell(1000)" style="display: none;" id="wd_sell1000">Sell 1000 pieces</button>
+					<button onclick="gm.rsrc.wood.sell(10000)" style="display: none;" id="wd_sell10000">Sell 10000 pieces</button>
+				</div>
+				<div id="burn_wood">
+					<h3>Campfire Restock</h3>
+					<p>Don't forget to keep the fire on or you'll need another campfire.
+						<span class="fl_right">1 log burns for 1 night</span>
+					</p>
+					<button onclick="gm.builds.campf.store(1)" id="wd_stock1">Stock 1 piece</button>
+					<button onclick="gm.builds.campf.store(10)" style="display: none;" id="wd_stock10">Stock 10 pieces</button>
+					<button onclick="gm.builds.campf.store(100)" style="display: none;" id="wd_stock100">Stock 100 pieces</button>
+					<button onclick="gm.builds.campf.store(1000)" style="display: none;" id="wd_stock1000">Stock 1000 pieces</button>
+					<button onclick="gm.builds.campf.store(10000)" style="display: none;" id="wd_stock10000">Stock 10000 pieces</button>
+				</div>
+				<div></div>
+			</div>
+
+			<div id="land_content" style="display: none;">
+				<div id="quarry">
+					<h3>Quarry <span class="fl_right" id="quarry_sqmt"><b>0 sqmt</b></span></h3>
+					<p>You can mine for some stone and maybe get some richies.
+						<span class="fl_right">1000 copper coins/sqmt</span>
+					</p>
+					<button onclick="gm.lands.quarry.buy()">Buy</button>
+					<button onclick="gm.lands.quarry.sell()">Sell</button>
+				</div>
+				<div id="forest">
+					<h3>Forest <span class="fl_right" id="forest_sqmt"><b>0 sqmt</b></span></h3>
+					<p>You might hunt and chop wood without fearing the wrath of The King.
+						<span class="fl_right">1 silver coins/sqmt</span>
+					</p>
+					<button onclick="gm.lands.forest.buy()">Buy</button>
+					<button onclick="gm.lands.forest.sell()">Sell</button>
+				</div>
+				<div id="campfire">
+					<h3>Campfire <span class="fl_right" id="campf_amt"><b>0</b></span></h3>
+					<p>With some wood and some hard work you can make a campfire.
+						<span class="fl_right">10 logs<br>5 stone pieces</span>
+					</p>
+					<p style="display: none;">Stock:
+						<span id="campf_stock">0 logs</span>
+					</p>
+					<button onclick="gm.builds.campf.build()">Build</button>
+				</div>
+			</div>
+
+			<div id="workplace_content" style="display: none;">
+				Workplace.
+			</div>
+
+			<div id="messages_content">
+			</div>
+
+		</div>
+	</div>
+
+	<div id="footer">
+		<p>Created by Kaue Ueda</p>
+		<p>Email: kauesilveira1609@gmail.com</p>
+		<p>Version 0.0.3</p>
+	</div>
+</body>
 </html>
